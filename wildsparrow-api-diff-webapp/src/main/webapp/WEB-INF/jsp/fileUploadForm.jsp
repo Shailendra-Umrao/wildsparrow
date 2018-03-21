@@ -11,7 +11,7 @@
 <!-- JQuery -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <%-- <c:import url="/WEB-INF/js/jquery-3.3.1.min.js" /> --%>
-<link href="<c:url value="/css/style.css" />" rel="stylesheet">
+<link href="<c:url value="/css/bootstrap.min.css" />" rel="stylesheet">
 <script src="<c:url value="/js/jquery-3.3.1.min.js" />"></script>
 
 <script>
@@ -103,15 +103,20 @@ $(function() {
 	<div class="container" align="center">
 		<h2>API Difference Utility Version 1.0</h2>
 		<hr>
+		<br>
+		<h3>Along with your project jars don't forget to add Third party jars. Select Current and Previous Version jars to upload. Press Add button to	add more jars inputs.</h3>
+		<br>
+		<hr>
 		<!-- File Upload From -->
 		<form:form method="post" modelAttribute="uploadForm"
 			enctype="multipart/form-data">
 			<table >
 				<tr>
 					<td>
-						<p>Select Current Version jars to upload. Press Add button to
-							add more jars inputs.</p> <input id="addCurrentVersionFile"
-						type="button" value="Add File" />
+						<p>Current Version jars.</p> 
+						
+						<input id="addCurrentVersionFile" type="button" value="Add Files" />
+						<br>
 						<table id="currentVersionFileTable">
 							<tr>
 								<td><input name=" newVersionJars[0]" type="file" /></td>
@@ -124,9 +129,9 @@ $(function() {
 					</td>
 
 					<td>
-						<p>Select Previous Version jars to upload. Press Add button to
-							add more jars inputs.</p> <input id="addPreviousVersionFile"
-						type="button" value="Add File" />
+					<p>Previous Version jars.</p> 
+						<input id="addPreviousVersionFile"	type="button" value="Add Files" />
+						<br>
 						<table id="PrevioupVersionFileTable">
 							<tr>
 								<td><input name="oldVersionJars[0]" type="file" /></td>

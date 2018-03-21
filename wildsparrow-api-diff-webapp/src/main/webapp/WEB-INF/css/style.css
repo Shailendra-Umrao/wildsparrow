@@ -330,24 +330,24 @@ a:active {
     color: blue;
 }
 
-#OBPTable {
+#WildSparrowTable {
 			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 			border-collapse: collapse;
 			width: 100%;			
 		}		
-		#OBPTable td{
+		#WildSparrowTable td{
 			border: 1px solid #ddd;
 			padding: 0px;
 			background-color: teal;
  			color: #fff;
 		}		
-		#OBPTable tr:nth-child(even) {
+		#WildSparrowTable tr:nth-child(even) {
 			background-color: #f2f2f2;
 		}		
-		#OBPTable tr:hover {
+		#WildSparrowTable tr:hover {
 			background-color: #ddd;
 		}		
-		#OBPTable th {
+		#WildSparrowTable th {
 			border: 1px solid #ddd;
 			padding: 0px;
 			padding-top: 0px;
