@@ -22,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class FileUploadController {
 
-	@GetMapping("/fileUploadForm")
+	@GetMapping("fileUploadForm")
 	public String fileUploadForm(Model model) {
 
 		return "fileUploadForm";
