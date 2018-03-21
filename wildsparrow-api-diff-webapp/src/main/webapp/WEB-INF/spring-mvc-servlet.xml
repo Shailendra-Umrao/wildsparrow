@@ -7,16 +7,23 @@
    http://www.springframework.org/schema/mvc 
    http://www.springframework.org/schema/mvc/spring-mvc.xsd
    http://www.springframework.org/schema/context 
-   http://www.springframework.org/schema/context/spring-context-3.0.xsd">        
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    
 
 
 	<context:component-scan base-package="org.shail.api.diff" />
 	<context:annotation-config />
+
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
-	</bean>	
+	</bean>
+
+
+
+	<bean id="userService" class="org.shail.api.diff.login.UserServiceImpl" />
+	<bean id="userDao" class="org.shail.api.diff.login.UserDaoImpl" />
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10485760"></property>
