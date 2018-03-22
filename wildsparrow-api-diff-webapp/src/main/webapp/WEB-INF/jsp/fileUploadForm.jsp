@@ -18,7 +18,9 @@
 $(document).ready(function() {
 	//add more file components if Add is clicked
 	$('#addCurrentVersionFile').click(function() {
-		var fileIndex = $('#currentVersionFileTable tr').children().length - 1;
+// 		var fileIndex = $('#currentVersionFileTable tr').children().length - 1;
+		var fileIndex = $('#currentVersionFileTable tr').length;
+
 		$('#currentVersionFileTable').append(
 				'<tr><td>'+
 				'	<input type="file" name="newVersionJars['+ fileIndex +']" />'+
@@ -30,7 +32,9 @@ $(document).ready(function() {
 $(document).ready(function() {
 	//add more file components if Add is clicked
 	$('#addPreviousVersionFile').click(function() {
-		var fileIndex = $('#PrevioupVersionFileTable tr').children().length - 1;
+// 		var fileIndex = $('#PrevioupVersionFileTable tr').children().length - 1;
+		var fileIndex = $('#PrevioupVersionFileTable tr').length;
+
 		$('#PrevioupVersionFileTable').append(
 				'<tr><td>'+
 				'	<input type="file" name="oldVersionJars['+ fileIndex +']" />'+
@@ -38,8 +42,6 @@ $(document).ready(function() {
 	});
 	
 });
-
-
 </script>
 
 
@@ -83,15 +85,29 @@ $(function() {
   
     // Called on success of file upload
     ajaxReq.done(function(msg) {
-      $('#alertMsg').text(msg);
+      $('#alertMsg').text("Jars uploaded Sucessfully. Generating Reports, Please wait....");
       $('input[type=file]').val('');
-      $('button[type=submit]').prop('disabled',false);
+      $('button[type=submit]').prop('disabled',false);       
+      setTimeout(function(){
+    	  $(document.body).html(msg);
+      }, 2000);
+     
     });
     
     // Called on failure of file upload
     ajaxReq.fail(function(jqXHR) {
-      $('#alertMsg').text(jqXHR.responseText+'('+jqXHR.status+
-      		' - '+jqXHR.statusText+')');
+    	
+    	var textmsg= jqXHR.responseText;
+    	if(textmsg !=null && textmsg.startsWith("<html><head>")){
+    		textmsg =textmsg.replace("<html><head><title>Error</title></head><body>/wildsparrow-api-diff-webapp/WEB-INF/jsp/", "");
+    		textmsg= textmsg.replace(".jsp</body></html>", "");
+        	  $('#alertMsg').text(textmsg);
+    	}else{
+    		  $('#alertMsg').text(jqXHR.responseText+'('+jqXHR.status+
+    		      		' - '+jqXHR.statusText+')');	
+    	}
+    	
+    
       $('button[type=submit]').prop('disabled',false);
     });
   });
@@ -100,6 +116,8 @@ $(function() {
 
 </head>
 <body>
+	<h4 align="right" style="padding-right: 5ex;"><a href="home">Home</a></h4>
+
 	<div class="container" align="center">
 		<h2>API Difference Utility Version 1.0</h2>
 		<hr>
@@ -108,8 +126,7 @@ $(function() {
 		<br>
 		<hr>
 		<!-- File Upload From -->
-		<form:form method="post" modelAttribute="uploadForm"
-			enctype="multipart/form-data">
+		<form:form method="post" modelAttribute="uploadForm"  enctype="multipart/form-data">
 			<table >
 				<tr>
 					<td>
@@ -119,7 +136,7 @@ $(function() {
 						<br>
 						<table id="currentVersionFileTable">
 							<tr>
-								<td><input name=" newVersionJars[0]" type="file" /></td>
+								<td><input name="newVersionJars[0]" type="file" /></td>
 							</tr>
 							<tr>
 								<td><input name="newVersionJars[1]" type="file" /></td>
@@ -145,8 +162,7 @@ $(function() {
 			</table>
 			<br />
 			<div class="form-group">
-				<button class="btn btn-primary" type="submit">Generate
-					Difference Report</button>
+				<button class="btn btn-primary" type="submit">Generate Difference Report</button>
 			</div>
 		</form:form>
 		<br />
