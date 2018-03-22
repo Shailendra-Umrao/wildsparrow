@@ -100,6 +100,7 @@ $(function() {
     	var textmsg= jqXHR.responseText;
     	if(textmsg !=null && textmsg.startsWith("<html><head>")){
     		textmsg =textmsg.replace("<html><head><title>Error</title></head><body>/wildsparrow-api-diff-webapp/WEB-INF/jsp/", "");
+    		textmsg= textmsg.replace("<html><head><title>Error</title></head><body>/WEB-INF/jsp/", "");    		
     		textmsg= textmsg.replace(".jsp</body></html>", "");
         	  $('#alertMsg').text(textmsg);
     	}else{
