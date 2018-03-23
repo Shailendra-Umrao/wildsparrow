@@ -111,7 +111,7 @@ public class FileUploadController {
 						// HttpStatus.EXPECTATION_FAILED);
 					}
 					ApiDifferenceFinder finder = new ApiDifferenceFinder();
-					differenceReport = finder.findDiffernce(
+					differenceReport = finder.findDiffernce(uploadForm.getPackageTobeScanned(),
 							oldVersionJarFiles.toArray(new File[oldVersionJarFiles.size()]),
 							newVersionJarFiles.toArray(new File[newVersionJarFiles.size()]));
 				} catch (IOException e) {

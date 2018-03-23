@@ -41,116 +41,60 @@ public class APIDifferenceReportDetailsDTO implements Serializable {
 	private String new_Signature;
 	private String dTOs_changed;
 
-	/**
-	 * @return the class_Name
-	 */
 	public String getClass_Name() {
-
 		return class_Name;
 	}
 
-	/**
-	 * @param class_Name the class_Name to set
-	 */
 	public void setClass_Name(String class_Name) {
-
 		this.class_Name = class_Name;
 	}
 
-	/**
-	 * @return the method_Name
-	 */
-	public String getMethod_Name() {
-
-		return method_Name;
-	}
-
-	/**
-	 * @param method_Name the method_Name to set
-	 */
-	public void setMethod_Name(String method_Name) {
-
-		this.method_Name = method_Name;
-	}
-
-	/**
-	 * @return the change
-	 */
-	public String getChange() {
-
-		return change;
-	}
-
-	/**
-	 * @param change the change to set
-	 */
-	public void setChange(String change) {
-
-		this.change = change;
-	}
-
-	/**
-	 * @return the old_Signature
-	 */
-	public String getOld_Signature() {
-
-		return old_Signature;
-	}
-
-	/**
-	 * @param old_Signature the old_Signature to set
-	 */
-	public void setOld_Signature(String old_Signature) {
-
-		this.old_Signature = old_Signature;
-	}
-
-	/**
-	 * @return the new_Signature
-	 */
-	public String getNew_Signature() {
-
-		return new_Signature;
-	}
-
-	/**
-	 * @param new_Signature the new_Signature to set
-	 */
-	public void setNew_Signature(String new_Signature) {
-
-		this.new_Signature = new_Signature;
-	}
-
-	/**
-	 * @return the dTOs_changed
-	 */
-	public String getDTOs_changed() {
-
-		return dTOs_changed;
-	}
-
-	/**
-	 * @param dTOs_changed the dTOs_changed to set
-	 */
-	public void setDTOs_changed(String dTOs_changed) {
-
-		this.dTOs_changed = dTOs_changed;
-	}
-
-	/**
-	 * @return the module
-	 */
 	public String getModule() {
-
 		return module;
 	}
 
-	/**
-	 * @param module the module to set
-	 */
 	public void setModule(String module) {
-
 		this.module = module;
+	}
+
+	public String getMethod_Name() {
+		return method_Name;
+	}
+
+	public void setMethod_Name(String method_Name) {
+		this.method_Name = method_Name;
+	}
+
+	public String getChange() {
+		return change;
+	}
+
+	public void setChange(String change) {
+		this.change = change;
+	}
+
+	public String getOld_Signature() {
+		return old_Signature;
+	}
+
+	public void setOld_Signature(String old_Signature) {
+		this.old_Signature = old_Signature;
+	}
+
+	public String getNew_Signature() {
+		return new_Signature;
+	}
+
+	public void setNew_Signature(String new_Signature) {
+		this.new_Signature = new_Signature;
+	}
+
+	public String getdTOs_changed() {
+		return dTOs_changed;
+	}
+
+	public void setdTOs_changed(String dTOs_changed) {
+		this.dTOs_changed = dTOs_changed;
 	}
 
 	@Override
@@ -194,4 +138,5 @@ public class APIDifferenceReportDetailsDTO implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
-}
+
+	}

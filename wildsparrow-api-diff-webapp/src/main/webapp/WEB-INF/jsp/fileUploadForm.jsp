@@ -117,24 +117,32 @@ $(function() {
 
 </head>
 <body>
-	<h4 align="right" style="padding-right: 5ex;"><a href="home">Home</a></h4>
+	<h4 align="right" style="padding-right: 5ex;">
+		<a href="home">Home</a>
+	</h4>
 
 	<div class="container" align="center">
 		<h2>API Difference Utility Version 1.0</h2>
 		<hr>
 		<br>
-		<h3>Along with your project jars don't forget to add Third party jars. Select Current and Previous Version jars to upload. Press Add button to	add more jars inputs.</h3>
+		<h3>Along with your project jars don't forget to add Third party
+			jars. Select Current and Previous Version jars to upload. Press Add
+			button to add more jars inputs.</h3>
 		<br>
 		<hr>
 		<!-- File Upload From -->
-		<form:form method="post" modelAttribute="uploadForm"  enctype="multipart/form-data">
-			<table >
+		<form:form method="post" modelAttribute="uploadForm"
+			enctype="multipart/form-data">
+			<table>
+				<tr>
+					<td>Package To Be Scanned</td>
+					<td><input name="packageTobeScanned" type="text" /></td>
+				</tr>
+
 				<tr>
 					<td>
-						<p>Current Version jars.</p> 
-						
-						<input id="addCurrentVersionFile" type="button" value="Add Files" />
-						<br>
+						<p>Current Version jars.</p> <input id="addCurrentVersionFile"
+						type="button" value="Add Files" /> <br>
 						<table id="currentVersionFileTable">
 							<tr>
 								<td><input name="newVersionJars[0]" type="file" /></td>
@@ -147,9 +155,8 @@ $(function() {
 					</td>
 
 					<td>
-					<p>Previous Version jars.</p> 
-						<input id="addPreviousVersionFile"	type="button" value="Add Files" />
-						<br>
+						<p>Previous Version jars.</p> <input id="addPreviousVersionFile"
+						type="button" value="Add Files" /> <br>
 						<table id="PrevioupVersionFileTable">
 							<tr>
 								<td><input name="oldVersionJars[0]" type="file" /></td>
@@ -163,7 +170,8 @@ $(function() {
 			</table>
 			<br />
 			<div class="form-group">
-				<button class="btn btn-primary" type="submit">Generate Difference Report</button>
+				<button class="btn btn-primary" type="submit">Generate
+					Difference Report</button>
 			</div>
 		</form:form>
 		<br />
@@ -178,6 +186,18 @@ $(function() {
 		<!-- Alert -->
 		<div id="alertMsg" style="color: red; font-size: 18px;"></div>
 	</div>
+	<br>
+	<hr>
+	<br>	
+	<hr>
+	<div align="center">
+		<h4>Download Sample Jars to Test Utility</h4>
+		<a
+			href="<c:url value="/zip/com.shailendra.common.tools_Current.jar" />">
+			Download Sample Current Version Jar</a> <br> <br> <a
+			href="<c:url value="/zip/com.shailendra.common.tools_Previous.jar" />">Download
+			Sample Previous Version Jar</a>
 
+	</div>
 </body>
 </html>

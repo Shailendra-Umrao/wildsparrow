@@ -77,8 +77,8 @@ public class ApiDifferenceFinder {
 		// }
 	}
 
-	public APIDifferenceReportDTO findDiffernce(File prevVersionjarfiles[], File currVersionjarfiles[]) {
-
+	public APIDifferenceReportDTO findDiffernce(String packageTobeScanned, File prevVersionjarfiles[],
+			File currVersionjarfiles[]) {
 		List<APIDifferenceReportDetailsDTO> addedMethodReportDTOs = new ArrayList<>();
 		List<APIDifferenceReportDetailsDTO> removedMethodReportDTOs = new ArrayList<>();
 		List<APIDifferenceReportDetailsDTO> modifiedSignatureChange = new ArrayList<>();
@@ -140,7 +140,7 @@ public class ApiDifferenceFinder {
 									"Method Signature Changed", prevMethodAttributes.getFullyQualifiedName(),
 									currMethodAttributes.getFullyQualifiedName(), "NA", getModuleName(className)));
 						} else {
-							findDTODifference(className, methodName, ambigiousMethodReportDTOs,
+							findDTODifference(packageTobeScanned, className, methodName, ambigiousMethodReportDTOs,
 									modifiedInputDTOFieldsAdded, modifiedInputDTOFieldRemoved, prevMethodAttributes,
 									currMethodAttributes);
 						}
@@ -152,13 +152,13 @@ public class ApiDifferenceFinder {
 		differenceReport.setAddedMethodReportDTOs(addedMethodReportDTOs);
 		differenceReport.setRemovedMethodReportDTOs(removedMethodReportDTOs);
 		differenceReport.setModifiedSignatureChange(modifiedSignatureChange);
-		differenceReport.setModifiedInputDTOFieldRemoved(modifiedInputDTOFieldsAdded);
+		differenceReport.setModifiedInputDTOFieldsAdded(modifiedInputDTOFieldsAdded);
 		differenceReport.setModifiedInputDTOFieldRemoved(modifiedInputDTOFieldRemoved);
 		differenceReport.setAmbigiousMethodReportDTOs(ambigiousMethodReportDTOs);
 		return differenceReport;
 	}
 
-	private void findDTODifference(String className, String methodName,
+	private void findDTODifference(String packageTobeScanned, String className, String methodName,
 			List<APIDifferenceReportDetailsDTO> ambigiousMethodReportDTOs,
 			List<APIDifferenceReportDetailsDTO> modifiedInputDTOFieldsAdded,
 			List<APIDifferenceReportDetailsDTO> modifiedInputDTOFieldRemoved, MethodAttributes prevMethodAttributes,
@@ -169,7 +169,8 @@ public class ApiDifferenceFinder {
 		// ClassLoader originalClassLoader =
 		// Thread.currentThread().getContextClassLoader();
 		for (String inputClass : prevMethodAttributes.getParameters()) {
-			if (inputClass.startsWith("com.ofss") && !DTO_EXCLUSION_LIST.contains(inputClass)) {
+			if (packageTobeScanned == null || packageTobeScanned.isEmpty()
+					|| (inputClass.startsWith(packageTobeScanned)) && !DTO_EXCLUSION_LIST.contains(inputClass)) {
 				try {
 					// Thread.currentThread().setContextClassLoader(previousVersionClassLoader);
 					Class previousVersionClass = previousVersionClassLoader.loadClass(inputClass);

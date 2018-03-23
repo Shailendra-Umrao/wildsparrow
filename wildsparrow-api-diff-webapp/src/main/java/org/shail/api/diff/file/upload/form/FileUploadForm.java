@@ -17,6 +17,9 @@ public class FileUploadForm implements Serializable{
 
 	private List<MultipartFile> newVersionJars;
 	private List<MultipartFile> newVersionThirdPartyJars;
+	
+	private String packageTobeScanned;
+	
 	public String getNamingPatternStart() {
 		return namingPatternStart;
 	}
@@ -65,6 +68,12 @@ public class FileUploadForm implements Serializable{
 	public void setNewVersionThirdPartyJars(List<MultipartFile> newVersionThirdPartyJars) {
 		this.newVersionThirdPartyJars = newVersionThirdPartyJars;
 	}
+	public String getPackageTobeScanned() {
+		return packageTobeScanned;
+	}
+	public void setPackageTobeScanned(String packageTobeScanned) {
+		this.packageTobeScanned = packageTobeScanned;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -107,9 +116,15 @@ public class FileUploadForm implements Serializable{
 		if (newVersionThirdPartyJars != null) {
 			builder.append("newVersionThirdPartyJars=");
 			builder.append(newVersionThirdPartyJars);
+			builder.append(", ");
+		}
+		if (packageTobeScanned != null) {
+			builder.append("packageTobeScanned=");
+			builder.append(packageTobeScanned);
 		}
 		builder.append("]");
 		return builder.toString();
 	}
+	
 
 }
